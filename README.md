@@ -1,0 +1,1 @@
+# coursework_6_django
