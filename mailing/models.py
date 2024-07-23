@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 NULLABLE = {'blank': True, 'null': True}
 PERIODICITY_CHOICES = (
     ('1', 'раз в день',),
@@ -21,7 +19,7 @@ class Client(models.Model):
     email = models.EmailField(verbose_name='Почта', unique=True, help_text='Введите электронную почту клиента')
     avatar = models.ImageField(upload_to='mailing/avatars/', verbose_name='Аватар', **NULLABLE,
                                help_text='Загрузите аватар клиента')
-    comment= models.TextField(verbose_name='Комментарий', **NULLABLE, help_text='Введите комментарий')
+    comment = models.TextField(verbose_name='Комментарий', **NULLABLE, help_text='Введите комментарий')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
