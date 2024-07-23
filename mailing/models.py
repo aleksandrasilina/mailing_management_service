@@ -5,14 +5,14 @@ from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
 PERIODICITY_CHOICES = (
-    (1, 'раз в день',),
-    (2, 'раз в неделю',),
-    (3, 'раз в месяц',)
+    ('1', 'раз в день',),
+    ('2', 'раз в неделю',),
+    ('3', 'раз в месяц',)
 )
 MAILING_STATUS_CHOICES = (
-    (1, 'создана',),
-    (2, 'запущена',),
-    (3, 'завершена',)
+    ('1', 'создана',),
+    ('2', 'запущена',),
+    ('3', 'завершена',)
 )
 
 
@@ -55,7 +55,7 @@ class Mailing(models.Model):
                                 help_text='Выберите сообщение для рассылки', related_name='messages')
 
     def __str__(self):
-        return f'Рассылка от {self.created_at}'
+        return f'Рассылка "{self.message}" от {self.created_at.strftime("%d.%m.%Y %H:%M")}'
 
     class Meta:
         verbose_name = 'Рассылка'
@@ -72,7 +72,7 @@ class MailingLog(models.Model):
     server_response = models.TextField(verbose_name='Ответ сервера', **NULLABLE)
 
     def __str__(self):
-        return f'Лог рассылки {self.mailing} (отправлен {self.sent_at})'
+        return f'Лог рассылки {self.mailing} (отправлен {self.sent_at.strftime("%d.%m.%Y %H:%M")})'
 
     class Meta:
         verbose_name = 'Лог рассылки'
