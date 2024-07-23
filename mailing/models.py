@@ -2,7 +2,6 @@ from django.db import models
 
 from django.db import models
 
-
 NULLABLE = {'blank': True, 'null': True}
 PERIODICITY_CHOICES = (
     ('1', 'раз в день',),
@@ -20,6 +19,9 @@ class Client(models.Model):
     first_name = models.CharField(max_length=100, verbose_name='Имя', help_text='Введите имя клиента')
     last_name = models.CharField(max_length=150, verbose_name='Фамилия', help_text='Введите фамилию клиента')
     email = models.EmailField(verbose_name='Почта', unique=True, help_text='Введите электронную почту клиента')
+    avatar = models.ImageField(upload_to='mailing/avatars/', verbose_name='Аватар', **NULLABLE,
+                               help_text='Загрузите аватар клиента')
+    comment= models.TextField(verbose_name='Комментарий', **NULLABLE, help_text='Введите комментарий')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -50,7 +52,7 @@ class Mailing(models.Model):
     mailing_status = models.CharField(max_length=100, verbose_name='Статус рассылки',
                                       help_text='Выберите статус рассылки', choices=MAILING_STATUS_CHOICES)
     client = models.ManyToManyField(Client, verbose_name='Клиенты рассылки', related_name='clients',
-                                     help_text='Выберите клиентов для рассылки')
+                                    help_text='Выберите клиентов для рассылки')
     message = models.ForeignKey(Message, verbose_name='Сообщение рассылки', on_delete=models.CASCADE,
                                 help_text='Выберите сообщение для рассылки', related_name='messages')
 
@@ -78,4 +80,3 @@ class MailingLog(models.Model):
         verbose_name = 'Лог рассылки'
         verbose_name_plural = 'Логи рассылок'
         ordering = ('-sent_at',)
-
