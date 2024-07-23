@@ -10,112 +10,26 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-    <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-        }
-
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-    </style>
-
 </head>
 <body>
-
-<header class="p-3 bg-dark text-white">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"/>
-                </svg>
-            </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 text-secondary">Главная</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Цены</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Услуги</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
-
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Найти..." aria-label="Search">
-            </form>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Войти</button>
-                <button type="button" class="btn btn-warning">Зарегистрироваться</button>
-            </div>
-        </div>
-    </div>
-</header>
-
+{% include 'mailing/includes/inc_menu.html' %}
 <main>
-
     <section class=" text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Сервис рассылки</h1>
                 <p class="lead text-muted">Разошлем все ваши письма</p>
-                <p>
-                    <a href="#" class="btn btn-dark my-2">Добавьте клиентов</a>
-                    <a href="#" class="btn btn-dark my-2">Создайте сообщение</a>
-                </p>
             </div>
         </div>
     </section>
-
-    <div class="album py-5 bg-light">
+    <div class="album py-3 bg-light">
         <div class="container">
             {% block content %}
             {% endblock %}
         </div>
     </div>
-
 </main>
-<div class="container ">
-    <footer class="pt-4 my-md-5 pt-md-5 border-top ">
-        <div class="row">
-            <div class="col-12 col-md">
-                <small class="d-block mb-3 text-muted">&copy; 2024–{% now 'Y' %}</small>
-            </div>
-            <div class="col-2 col-md">
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">О нас</a></li>
-                </ul>
-            </div>
-            <div class="col-2 col-md">
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="col-2 col-md">
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Отзывы</a></li>
-                </ul>
-            </div>
-            <div class="col-2 col-md">
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">FAQs</a></li>
-                </ul>
-            </div>
-            <div class="col-2 col-md">
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Вакансии</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-</div>
-
+{% include 'mailing/includes/inc_footer.html' %}
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
