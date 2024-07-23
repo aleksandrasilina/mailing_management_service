@@ -31,7 +31,7 @@ class Client(models.Model):
 
 
 class Message(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Тема сообщения', help_text='Введите тему сообщения')
+    title = models.CharField(max_length=200, verbose_name='Тема сообщения', help_text='Напишите тему сообщения')
     body = models.TextField(verbose_name='Содержание сообщения', help_text='Напишите сообщение')
 
     def __str__(self):
