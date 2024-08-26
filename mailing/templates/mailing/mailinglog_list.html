@@ -1,0 +1,23 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    {% for object in object_list %}
+    <div class="d-flex text-muted pt-3 border-bottom justify-content-between">
+        <div class="d-flex text-muted pt-3">
+            <p class="pb-3 mb-0 small lh-sm">
+                <strong class="d-block text-gray-dark">{{ object }}</strong>
+                <span class="d-block small text-dark">Рассылка: {{ object.mailing }}</span>
+                <span class="d-block small text-dark">Отправлена: {{ object.sent_at }}</span>
+
+                <span class="d-block small text-dark">Успешно: {{ object.is_success|yesno:"Да, Нет" }}</span>
+                <span class="d-block small text-dark">Отчет: {{ object.server_response }}</span>
+            </p>
+        </div>
+        <div class="btn-group h-50">
+            <a href="{% url 'mailing:mailing_log_detail' object.pk %}" class="btn btn-outline-dark my-2">Посмотреть</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
