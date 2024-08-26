@@ -72,7 +72,7 @@ class MailingLog(models.Model):
     server_response = models.TextField(verbose_name='Ответ сервера', **NULLABLE)
 
     def __str__(self):
-        return f'Лог рассылки {self.mailing} (отправлен {self.sent_at.strftime("%d.%m.%Y %H:%M")})'
+        return f'Попытка рассылки: {self.mailing}'
 
     class Meta:
         verbose_name = 'Лог рассылки'
