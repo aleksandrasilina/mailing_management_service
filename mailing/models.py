@@ -2,14 +2,14 @@ from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
 PERIODICITY_CHOICES = (
-    ('1', 'раз в день',),
-    ('2', 'раз в неделю',),
-    ('3', 'раз в месяц',)
+    ('once a day', 'раз в день',),
+    ('once a week', 'раз в неделю',),
+    ('once a month', 'раз в месяц',)
 )
 MAILING_STATUS_CHOICES = (
-    ('1', 'создана',),
-    ('2', 'запущена',),
-    ('3', 'завершена',)
+    ('created', 'создана',),
+    ('launched', 'запущена',),
+    ('completed', 'завершена',)
 )
 
 
@@ -49,10 +49,10 @@ class Mailing(models.Model):
                                    help_text='Выберите периодичность рассылки', choices=PERIODICITY_CHOICES)
     mailing_status = models.CharField(max_length=100, verbose_name='Статус рассылки',
                                       help_text='Выберите статус рассылки', choices=MAILING_STATUS_CHOICES)
-    client = models.ManyToManyField(Client, verbose_name='Клиенты рассылки', related_name='clients',
-                                    help_text='Выберите клиентов для рассылки')
+    clients = models.ManyToManyField(Client, verbose_name='Клиенты рассылки',
+                                     help_text='Выберите клиентов для рассылки', related_name='mailings')
     message = models.ForeignKey(Message, verbose_name='Сообщение рассылки', on_delete=models.CASCADE,
-                                help_text='Выберите сообщение для рассылки', related_name='messages')
+                                help_text='Выберите сообщение для рассылки', related_name='mailings')
 
     def __str__(self):
         return f'Рассылка "{self.message}" от {self.created_at.strftime("%d.%m.%Y %H:%M")}'
