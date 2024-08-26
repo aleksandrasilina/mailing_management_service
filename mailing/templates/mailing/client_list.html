@@ -1,9 +1,8 @@
 {% extends 'mailing/base.html' %}
 {% block content %}
-        <p class="text-center mb-2">
-          <a href="{% url 'mailing:client_create' %}" class="btn btn-dark my-2">Добавить клиента</a>
-        </p>
-  </section>
+<p class="text-center mb-2">
+    <a href="{% url 'mailing:client_create' %}" class="btn btn-dark my-2">Добавить клиента</a>
+</p>
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     {% for object in object_list %}
     <div class="d-flex text-muted pt-3 border-bottom justify-content-between">
