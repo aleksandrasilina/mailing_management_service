@@ -1,14 +1,16 @@
 {% extends 'mailing/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="col-12">
     <div class="row justify-content-center">
         <div class="col-6">
             <div class="card">
-                <div class="card-header text-center"><h3 class="display-6">Заполните данные о клиенте</h3></div>
+                <div class="card-header"><h3 class="display-6">Заполните данные о клиенте</h3></div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form|crispy }}
                         <button type="submit" class="btn btn-outline-dark">
                             {% if object %}
                             Сохранить
