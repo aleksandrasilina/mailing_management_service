@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'mailing/base.html' %}
+{% block content %}
 
-</body>
-</html>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="row bg-white g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-2 text-center">{{ object }}</h3>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Рассылка:</td>
+                        <td>{{ object.mailing }}</td>
+                    </tr>
+                    <tr>
+                        <td>Отправлена:</td>
+                        <td>{{ object.sent_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>Успешно:</td>
+                        <td>{{ object.is_success|yesno:"Да, Нет" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ответ сервера:</td>
+                        <td>{{ object.server_response }}</td>
+                    </tr>
+                    <tr>
+                        <td>Количество попыток:</td>
+                        <td>{{ object.count }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="{% url 'mailing:mailing_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Назад
+                    <svg class="bi">
+                        <use xlink:href="#chevron-right"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
