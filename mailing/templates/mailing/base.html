@@ -5,11 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Сервис рассылки</title>
+    <title>{{ title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <!-- Site Icon -->
+    <link href="{% static 'images/free-icon-envelope-482948.png' %}" rel="shortcut icon" type="image/x-icon">
+    <!-- fontawesome.com Icons -->
+    <script src="{% static 'js/kit.fontawesome.com_160e143d24.js' %}" crossorigin="anonymous"></script>
 </head>
 <body>
 {% include 'mailing/includes/inc_menu.html' %}
