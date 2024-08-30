@@ -1,0 +1,210 @@
+[
+  {
+    "model": "mailing.client",
+    "pk": 1,
+    "fields": {
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "email": "ivanivanov@email.com",
+      "avatar": "mailing/avatars/ivan_ivanov.jpg",
+      "comment": "Самый лучший клиент"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 2,
+    "fields": {
+      "first_name": "Петр",
+      "last_name": "Петров",
+      "email": "petrpetrov@email.com",
+      "avatar": "mailing/avatars/petr_petrov.jpg",
+      "comment": "Самый первый клиент"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 3,
+    "fields": {
+      "first_name": "Василиса",
+      "last_name": "Васильева",
+      "email": "vasilisavasiliyeva@email.ru",
+      "avatar": "",
+      "comment": "Предпочитает рассрочку"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 4,
+    "fields": {
+      "first_name": "Семен",
+      "last_name": "Семенов",
+      "email": "semensemenov@email.com",
+      "avatar": "mailing/avatars/semensemenov.jpg",
+      "comment": "Крупный оптовик"
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 1,
+    "fields": {
+      "title": "Акции дня",
+      "body": "Посмотрите наши ежедневные акции"
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 2,
+    "fields": {
+      "title": "Новинки недели",
+      "body": "Посмотрите наши новинки на сайте"
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 3,
+    "fields": {
+      "title": "Товары месяца",
+      "body": "Посмотрите самые популярные товары за месяц"
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 1,
+    "fields": {
+      "message": 2,
+      "first_send_time": "2024-08-28T21:00:00Z",
+      "next_send_time": null,
+      "last_send_time": "2025-08-28T21:00:00Z",
+      "periodicity": "WEEKLY",
+      "mailing_status": "PAUSED",
+      "clients": [
+        3,
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 2,
+    "fields": {
+      "message": 1,
+      "first_send_time": "2024-08-28T21:00:00Z",
+      "next_send_time": null,
+      "last_send_time": null,
+      "periodicity": "DAILY",
+      "mailing_status": "PAUSED",
+      "clients": [
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 3,
+    "fields": {
+      "message": 3,
+      "first_send_time": "2024-08-28T21:00:00Z",
+      "next_send_time": null,
+      "last_send_time": "2025-08-28T21:00:00Z",
+      "periodicity": "MONTHLY",
+      "mailing_status": "PAUSED",
+      "clients": [
+        3,
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 8,
+    "fields": {
+      "message": 1,
+      "first_send_time": "2024-08-29T21:00:00Z",
+      "next_send_time": null,
+      "last_send_time": null,
+      "periodicity": "DAILY",
+      "mailing_status": "PAUSED",
+      "clients": [
+        3,
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 9,
+    "fields": {
+      "message": 2,
+      "first_send_time": "2024-08-31T11:16:00Z",
+      "next_send_time": null,
+      "last_send_time": null,
+      "periodicity": "WEEKLY",
+      "mailing_status": "CREATED",
+      "clients": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 10,
+    "fields": {
+      "message": 3,
+      "first_send_time": "2024-08-01T11:30:00Z",
+      "next_send_time": null,
+      "last_send_time": "2024-08-20T11:30:00Z",
+      "periodicity": "MONTHLY",
+      "mailing_status": "COMPLETED",
+      "clients": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 99,
+    "fields": {
+      "mailing": 1,
+      "sent_at": "2024-08-29T11:39:14.457Z",
+      "is_success": true,
+      "server_response": "1"
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 100,
+    "fields": {
+      "mailing": 2,
+      "sent_at": "2024-08-29T11:39:15.033Z",
+      "is_success": true,
+      "server_response": "1"
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 101,
+    "fields": {
+      "mailing": 3,
+      "sent_at": "2024-08-29T11:39:15.409Z",
+      "is_success": true,
+      "server_response": "1"
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 102,
+    "fields": {
+      "mailing": 8,
+      "sent_at": "2024-08-30T07:48:39.790Z",
+      "is_success": true,
+      "server_response": "1"
+    }
+  }
+]
