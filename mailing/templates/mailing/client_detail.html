@@ -6,7 +6,7 @@
         <div class="row bg-white g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
-                <h3 class="mb-0">{{ object }}</h3>
+                <h3 class="mb-0">{{ object.first_name }} {{ object.last_name }}</h3>
                 <div class="mb-1 text-body-secondary">{{ client.email }}</div>
                 <p class="card-text mb-auto">{{ object.comment }}</p>
                 <a href="{% url 'mailing:client_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
