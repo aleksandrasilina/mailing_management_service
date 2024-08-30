@@ -24,7 +24,10 @@ INSTALLED_APPS = [
     'mailing',
     'crispy_forms',
     'crispy_bootstrap5',
-    'django_apscheduler'
+    'django_apscheduler',
+    'users',
+    'phonenumber_field',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
@@ -113,3 +116,9 @@ EMAIL_ADMIN = EMAIL_HOST_USER
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+PHONENUMBER_DEFAULT_REGION = 'RU'
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
