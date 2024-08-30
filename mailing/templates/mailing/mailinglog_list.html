@@ -9,9 +9,8 @@
                 <strong class="d-block text-gray-dark">{{ object }}</strong>
                 <span class="d-block small text-dark">Рассылка: {{ object.mailing }}</span>
                 <span class="d-block small text-dark">Отправлена: {{ object.sent_at }}</span>
-
                 <span class="d-block small text-dark">Успешно: {{ object.is_success|yesno:"Да, Нет" }}</span>
-                <span class="d-block small text-dark">Отчет: {{ object.server_response }}</span>
+                <span class="d-block small text-dark">Ответ сервера: {{ object.server_response }}</span>
             </p>
         </div>
         <div class="btn-group h-50">
