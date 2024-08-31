@@ -24,7 +24,9 @@
                     <div class="dropdown me-5">
                         <button class="btn dropdown-toggle btn-dark" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if user.avatar %}
                             <img class="flex-shrink-0 me-2 rounded" width="32" height="32" src="/media/{{ user.avatar }}">
+                            {% endif %}
                             {{ user.email }}
                         </button>
                         <ul class="dropdown-menu">
