@@ -11,6 +11,7 @@
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-outline-dark">Войти</button>
                 </div>
+                <a class="text-decoration-none mb-2 me-4 text-end" href="{% url 'users:password-reset' %}">Забыли пароль?</a>
             </div>
         </div>
     </form>
