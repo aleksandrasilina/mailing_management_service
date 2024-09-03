@@ -1,0 +1,90 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$OAeappPOkqAs1R9YspakLx$9sO7hUUr4nCwGVK2zvneyblaquFA2Mobjjx2hcAWJMw=",
+      "last_login": "2024-09-03T11:02:42.391Z",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-30T11:06:42.999Z",
+      "email": "admin@example.ru",
+      "first_name": "Антон",
+      "last_name": "Антонов",
+      "phone_number": "+73011234567",
+      "avatar": "users/avatars/anton_antonov.jpg",
+      "country": "RU",
+      "token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$liPpf9DtfbaFXKmPFchurt$Yxw0z/gYwgmWzMkhnDw2CzWJHdIzdtmIDoHVwk5j6O4=",
+      "last_login": "2024-09-03T10:19:04Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-30T11:59:35Z",
+      "email": "al.a.silina@yandex.ru",
+      "first_name": null,
+      "last_name": null,
+      "phone_number": null,
+      "avatar": "",
+      "country": null,
+      "token": null,
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$NBXC42YWsHFFtM0f1InoFM$d+pgJSkSktqtR/Zo5C8jk2Qp2TFmDXI0jmozE4VAi9w=",
+      "last_login": "2024-09-03T10:32:08.304Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-08-31T12:04:39Z",
+      "email": "mufta.88@mail.ru",
+      "first_name": null,
+      "last_name": null,
+      "phone_number": null,
+      "avatar": "",
+      "country": null,
+      "token": "d39e66bd37162bfa920ecdb8b9511671",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$q3wUbUAxA7LryW3nxD7g2A$ER8akSjSXTYqRdSnAOnYnmSSU8lElyLZdqaPE368iY8=",
+      "last_login": "2024-09-03T10:19:22.644Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-02T11:00:59.648Z",
+      "email": "aleksandrasilina@gmail.com",
+      "first_name": null,
+      "last_name": null,
+      "phone_number": null,
+      "avatar": "",
+      "country": null,
+      "token": "498485ffcc6f3b187e4fa5ceae162576",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
