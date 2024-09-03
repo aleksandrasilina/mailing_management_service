@@ -7,7 +7,8 @@
       "last_name": "Иванов",
       "email": "ivanivanov@email.com",
       "avatar": "mailing/avatars/ivan_ivanov.jpg",
-      "comment": "Самый лучший клиент"
+      "comment": "Самый лучший клиент",
+      "owner": 2
     }
   },
   {
@@ -18,7 +19,8 @@
       "last_name": "Петров",
       "email": "petrpetrov@email.com",
       "avatar": "mailing/avatars/petr_petrov.jpg",
-      "comment": "Самый первый клиент"
+      "comment": "Самый первый клиент",
+      "owner": 2
     }
   },
   {
@@ -29,7 +31,8 @@
       "last_name": "Васильева",
       "email": "vasilisavasiliyeva@email.ru",
       "avatar": "",
-      "comment": "Предпочитает рассрочку"
+      "comment": "Предпочитает рассрочку",
+      "owner": 2
     }
   },
   {
@@ -40,7 +43,32 @@
       "last_name": "Семенов",
       "email": "semensemenov@email.com",
       "avatar": "mailing/avatars/semensemenov.jpg",
-      "comment": "Крупный оптовик"
+      "comment": "Крупный оптовик",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 5,
+    "fields": {
+      "first_name": "Анатолий",
+      "last_name": "Анатольев",
+      "email": "anatoliy@email.com",
+      "avatar": "mailing/avatars/anatoliy.png",
+      "comment": "Не говорит по-русски",
+      "owner": 6
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 6,
+    "fields": {
+      "first_name": "Владимир",
+      "last_name": "Владимиров",
+      "email": "vladimir@email.com",
+      "avatar": "mailing/avatars/vladimir.jpg",
+      "comment": "Любит петь",
+      "owner": 6
     }
   },
   {
@@ -48,7 +76,8 @@
     "pk": 1,
     "fields": {
       "title": "Акции дня",
-      "body": "Посмотрите наши ежедневные акции"
+      "body": "Посмотрите наши ежедневные акции",
+      "owner": 2
     }
   },
   {
@@ -56,7 +85,8 @@
     "pk": 2,
     "fields": {
       "title": "Новинки недели",
-      "body": "Посмотрите наши новинки на сайте"
+      "body": "Посмотрите наши новинки на сайте",
+      "owner": 2
     }
   },
   {
@@ -64,7 +94,17 @@
     "pk": 3,
     "fields": {
       "title": "Товары месяца",
-      "body": "Посмотрите самые популярные товары за месяц"
+      "body": "Посмотрите самые популярные товары за месяц",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailing.message",
+    "pk": 4,
+    "fields": {
+      "title": "Ежедневное напоминание",
+      "body": "Напоминаем, что вы на нас подписаны",
+      "owner": 6
     }
   },
   {
@@ -77,6 +117,7 @@
       "last_send_time": "2025-08-28T21:00:00Z",
       "periodicity": "WEEKLY",
       "mailing_status": "PAUSED",
+      "owner": 2,
       "clients": [
         3,
         1,
@@ -91,10 +132,11 @@
     "fields": {
       "message": 1,
       "first_send_time": "2024-08-28T21:00:00Z",
-      "next_send_time": null,
+      "next_send_time": "2024-09-02T14:48:53.720Z",
       "last_send_time": null,
       "periodicity": "DAILY",
       "mailing_status": "PAUSED",
+      "owner": 2,
       "clients": [
         1,
         2
@@ -111,44 +153,12 @@
       "last_send_time": "2025-08-28T21:00:00Z",
       "periodicity": "MONTHLY",
       "mailing_status": "PAUSED",
+      "owner": 2,
       "clients": [
         3,
         1,
         2,
         4
-      ]
-    }
-  },
-  {
-    "model": "mailing.mailing",
-    "pk": 8,
-    "fields": {
-      "message": 1,
-      "first_send_time": "2024-08-29T21:00:00Z",
-      "next_send_time": null,
-      "last_send_time": null,
-      "periodicity": "DAILY",
-      "mailing_status": "PAUSED",
-      "clients": [
-        3,
-        1,
-        2,
-        4
-      ]
-    }
-  },
-  {
-    "model": "mailing.mailing",
-    "pk": 9,
-    "fields": {
-      "message": 2,
-      "first_send_time": "2024-08-31T11:16:00Z",
-      "next_send_time": null,
-      "last_send_time": null,
-      "periodicity": "WEEKLY",
-      "mailing_status": "CREATED",
-      "clients": [
-        3
       ]
     }
   },
@@ -162,8 +172,26 @@
       "last_send_time": "2024-08-20T11:30:00Z",
       "periodicity": "MONTHLY",
       "mailing_status": "COMPLETED",
+      "owner": 2,
       "clients": [
         1
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 13,
+    "fields": {
+      "message": 4,
+      "first_send_time": "2024-09-02T23:35:00Z",
+      "next_send_time": null,
+      "last_send_time": null,
+      "periodicity": "DAILY",
+      "mailing_status": "created",
+      "owner": 6,
+      "clients": [
+        5,
+        6
       ]
     }
   },
@@ -174,7 +202,8 @@
       "mailing": 1,
       "sent_at": "2024-08-29T11:39:14.457Z",
       "is_success": true,
-      "server_response": "1"
+      "server_response": "1",
+      "owner": 2
     }
   },
   {
@@ -184,7 +213,8 @@
       "mailing": 2,
       "sent_at": "2024-08-29T11:39:15.033Z",
       "is_success": true,
-      "server_response": "1"
+      "server_response": "1",
+      "owner": 2
     }
   },
   {
@@ -194,17 +224,41 @@
       "mailing": 3,
       "sent_at": "2024-08-29T11:39:15.409Z",
       "is_success": true,
-      "server_response": "1"
+      "server_response": "1",
+      "owner": 2
     }
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 102,
+    "pk": 103,
     "fields": {
-      "mailing": 8,
-      "sent_at": "2024-08-30T07:48:39.790Z",
+      "mailing": 2,
+      "sent_at": "2024-08-31T11:58:29.219Z",
       "is_success": true,
-      "server_response": "1"
+      "server_response": "1",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 104,
+    "fields": {
+      "mailing": 2,
+      "sent_at": "2024-09-01T14:48:53.720Z",
+      "is_success": true,
+      "server_response": "1",
+      "owner": 2
+    }
+  },
+  {
+    "model": "mailing.mailinglog",
+    "pk": 105,
+    "fields": {
+      "mailing": 2,
+      "sent_at": "2024-09-02T20:37:35.696Z",
+      "is_success": true,
+      "server_response": "1",
+      "owner": 2
     }
   }
 ]
