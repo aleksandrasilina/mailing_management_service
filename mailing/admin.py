@@ -10,6 +10,10 @@ class ClientAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "email",
+        "owner",
+    )
+    list_filter = (
+        "owner",
     )
     search_fields = (
         "first_name",
@@ -27,6 +31,10 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "title",
+        "owner",
+    )
+    list_filter = (
+        "owner",
     )
     search_fields = (
         "title",
@@ -46,12 +54,14 @@ class MailingAdmin(admin.ModelAdmin):
         "first_send_time",
         "periodicity",
         "mailing_status",
+        "owner",
     )
     list_filter = (
         "periodicity",
         "mailing_status",
         "clients",
         "message",
+        "owner",
     )
     list_display_links = (
         "id",
@@ -66,11 +76,13 @@ class MailingLogAdmin(admin.ModelAdmin):
         "sent_at",
         "is_success",
         "mailing",
+        "owner",
     )
     list_filter = (
         "is_success",
         "is_success",
         "mailing",
+        "owner",
     )
     search_fields = ("server_response",)
     list_display_links = (
