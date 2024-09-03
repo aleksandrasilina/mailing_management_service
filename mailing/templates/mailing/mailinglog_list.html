@@ -1,16 +1,16 @@
 {% extends 'mailing/base.html' %}
 {% block content %}
-
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     {% for object in object_list %}
     <div class="d-flex text-muted pt-3 border-bottom justify-content-between">
         <div class="d-flex text-muted pt-3">
             <p class="pb-3 mb-0 small lh-sm">
                 <strong class="d-block text-gray-dark">{{ object }}</strong>
-                <span class="d-block small text-dark">Рассылка: {{ object.mailing }}</span>
-                <span class="d-block small text-dark">Отправлена: {{ object.sent_at }}</span>
-                <span class="d-block small text-dark">Успешно: {{ object.is_success|yesno:"Да, Нет" }}</span>
-                <span class="d-block small text-dark">Ответ сервера: {{ object.server_response }}</span>
+                Рассылка: {{ object.mailing }}<br>
+                Отправлена: {{ object.sent_at }}<br>
+                Успешно: {{ object.is_success|yesno:"Да, Нет" }}<br>
+                Ответ сервера: {{ object.server_response|yesno:"Рассылка отправлена, Ошибка отправки" }}<br>
+                Владелец: {{ object.owner }}<br>
             </p>
         </div>
         <div class="btn-group h-50">
@@ -18,5 +18,6 @@
         </div>
     </div>
     {% endfor %}
+    {% include "mailing/includes/inc_pagination.html" with page=object_list %}
 </div>
 {% endblock %}
