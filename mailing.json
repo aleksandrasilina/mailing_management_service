@@ -164,7 +164,7 @@
   },
   {
     "model": "mailing.mailing",
-    "pk": 10,
+    "pk": 4,
     "fields": {
       "message": 3,
       "first_send_time": "2024-08-01T11:30:00Z",
@@ -180,7 +180,7 @@
   },
   {
     "model": "mailing.mailing",
-    "pk": 13,
+    "pk": 5,
     "fields": {
       "message": 4,
       "first_send_time": "2024-09-02T23:35:00Z",
@@ -197,7 +197,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 99,
+    "pk": 1,
     "fields": {
       "mailing": 1,
       "sent_at": "2024-08-29T11:39:14.457Z",
@@ -208,7 +208,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 100,
+    "pk": 2,
     "fields": {
       "mailing": 2,
       "sent_at": "2024-08-29T11:39:15.033Z",
@@ -219,7 +219,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 101,
+    "pk": 3,
     "fields": {
       "mailing": 3,
       "sent_at": "2024-08-29T11:39:15.409Z",
@@ -230,7 +230,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 103,
+    "pk": 4,
     "fields": {
       "mailing": 2,
       "sent_at": "2024-08-31T11:58:29.219Z",
@@ -241,7 +241,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 104,
+    "pk": 5,
     "fields": {
       "mailing": 2,
       "sent_at": "2024-09-01T14:48:53.720Z",
@@ -252,7 +252,7 @@
   },
   {
     "model": "mailing.mailinglog",
-    "pk": 105,
+    "pk": 6,
     "fields": {
       "mailing": 2,
       "sent_at": "2024-09-02T20:37:35.696Z",
