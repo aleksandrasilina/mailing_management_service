@@ -55,19 +55,18 @@ def send_mailing():
                 subject=mailing.message.title,
                 message=mailing.message.body,
                 from_email=settings.EMAIL_HOST_USER,
-                recipient_list=
-                # [client.email for client in mailing.clients.all()] +
-                [settings.EMAIL_HOST_USER],
+                recipient_list=[client.email for client in mailing.clients.all()] + [settings.EMAIL_HOST_USER],
                 fail_silently=False
             )
             mailing.mailing_status = 'PAUSED'
             mailing.save()
 
-            MailingLog.objects.create(mailing=mailing, is_success=True, server_response=server_response)
+            MailingLog.objects.create(mailing=mailing, is_success=True, server_response=server_response,
+                                      owner=mailing.owner)
             print(f"Рассылка {mailing} успешно отправлена")
 
         except smtplib.SMTPException as e:
-            MailingLog.objects.create(mailing=mailing, is_success=False, server_response=e)
+            MailingLog.objects.create(mailing=mailing, is_success=False, server_response=e, owner=mailing.owner)
             print(f"Ошибка при отправке рассылки {mailing}")
 
 
