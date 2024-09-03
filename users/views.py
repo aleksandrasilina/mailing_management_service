@@ -1,16 +1,24 @@
 import secrets
 
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetView, LoginView
 from django.core.mail import send_mail
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, ListView
 
 from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
+
+
+class UserLoginView(LoginView):
+    template_name = 'users/login.html'
+    extra_context = {
+        'title': 'Вход'
+    }
 
 
 class RegisterView(CreateView):
@@ -44,7 +52,7 @@ def email_verification(request, token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
     user.save()
-    return redirect(reverse_lazy('users:login'))
+    return redirect(reverse_lazy('users:login'), context={'title': 'Подтверждение почты'})
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
@@ -83,3 +91,21 @@ class UserPasswordResetView(PasswordResetView):
             return self.form_invalid(form)
         else:
             return redirect(reverse('users:password-reset-done'))
+
+
+class UserListView(LoginRequiredMixin, ListView):
+    model = User
+
+
+@login_required
+@permission_required('users/set_toggle_activity.html')
+def toggle_activity(request, pk):
+    user_item = get_object_or_404(User, pk=pk)
+    if user_item.is_active:
+        user_item.is_active = False
+    else:
+        user_item.is_active = True
+
+    user_item.save()
+
+    return redirect(reverse('users:user_list'))
