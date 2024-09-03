@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 NULLABLE = {"blank": True, "null": True}
 PERIODICITY_CHOICES = (
     (
@@ -54,6 +56,12 @@ class Client(models.Model):
     comment = models.TextField(
         verbose_name="Комментарий", **NULLABLE, help_text="Введите комментарий"
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.email})"
@@ -61,7 +69,7 @@ class Client(models.Model):
     class Meta:
         verbose_name = "Клиент"
         verbose_name_plural = "Клиенты"
-        ordering = ("last_name",)
+        ordering = ("owner", "last_name",)
 
 
 class Message(models.Model):
@@ -73,6 +81,12 @@ class Message(models.Model):
     body = models.TextField(
         verbose_name="Содержание сообщения", help_text="Напишите сообщение"
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+    )
 
     def __str__(self):
         return self.title
@@ -80,7 +94,7 @@ class Message(models.Model):
     class Meta:
         verbose_name = "Сообщение"
         verbose_name_plural = "Сообщения"
-        ordering = ("title",)
+        ordering = ("owner", "title",)
 
 
 class Mailing(models.Model):
@@ -125,6 +139,12 @@ class Mailing(models.Model):
         help_text="Выберите клиентов для рассылки",
         related_name="mailings",
     )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+    )
 
     def __str__(self):
         return f'Рассылка "{self.message}" от {self.first_send_time.strftime("%d.%m.%Y %H:%M")}'
@@ -133,6 +153,9 @@ class Mailing(models.Model):
         verbose_name = "Рассылка"
         verbose_name_plural = "Рассылки"
         ordering = ("-first_send_time",)
+        permissions = [
+            ("can_change_mailing_status", "Can change mailing status"),
+        ]
 
 
 class MailingLog(models.Model):
@@ -149,6 +172,12 @@ class MailingLog(models.Model):
         editable=False
     )
     server_response = models.TextField(verbose_name="Ответ сервера", **NULLABLE)
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        **NULLABLE,
+        verbose_name="Владелец",
+    )
 
     def __str__(self):
         return f"Попытка рассылки: {self.mailing}, отправлена {self.sent_at.strftime("%d.%m.%Y %H:%M")}"
