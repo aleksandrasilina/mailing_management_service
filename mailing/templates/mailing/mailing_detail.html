@@ -52,6 +52,12 @@
                             {% endfor %}
                         </td>
                     </tr>
+                                        <tr>
+                        <td>Владелец:</td>
+                        <td>
+                            {{ object.owner }},
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <a href="{% url 'mailing:mailing_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
