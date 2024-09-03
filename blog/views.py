@@ -17,7 +17,7 @@ class ArticleListView(ListView):
         return get_article_list_from_cache()
 
 
-class ArticleDetailView(LoginRequiredMixin,  DetailView):
+class ArticleDetailView(LoginRequiredMixin, DetailView):
     model = Article
 
     def get_object(self, queryset=None):
