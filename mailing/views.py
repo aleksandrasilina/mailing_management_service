@@ -190,6 +190,7 @@ class MailingCreateView(LoginRequiredMixin, CreateView):
         mailing = form.save()
         user = self.request.user
         mailing.owner = user
+        mailing.mailing_status = 'CREATED'
         mailing.save()
         return super().form_valid(form)
 
