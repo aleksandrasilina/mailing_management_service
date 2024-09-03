@@ -23,8 +23,9 @@ class MailingForm(forms.ModelForm):
         self.fields["first_send_time"].widget = DateTimeInput()
         self.fields["last_send_time"].widget = DateTimeInput()
 
-        self.fields["message"].queryset = Message.objects.filter(owner=user)
-        self.fields["clients"].queryset = Client.objects.filter(owner=user)
+        if not user.is_superuser:
+            self.fields["message"].queryset = Message.objects.filter(owner=user)
+            self.fields["clients"].queryset = Client.objects.filter(owner=user)
 
 
 class MailingModeratorForm(forms.ModelForm):
