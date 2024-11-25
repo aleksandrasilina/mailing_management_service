@@ -1,0 +1,73 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="row bg-white g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-2 text-center">{{ object }}</h3>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Сообщение:</td>
+                        <td>{{ object.message }}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата и время первой отправки:</td>
+                        <td>{{ object.first_send_time }}</td>
+                    </tr>
+                    <tr>
+                        <td>Дата и время следующей отправки:</td>
+                        <td>
+                            {% if object.next_send_time %}
+                            {{ object.next_send_time }}
+                            {% else %}
+                            {{ object.first_send_time }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Дата и время окончания рассылки:</td>
+                        <td>
+                            {% if object.last_send_time %}
+                            {{ object.last_send_time }}
+                            {% else %}
+                            не указана
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Периодичность рассылки:</td>
+                        <td>{{ object.get_periodicity_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Статус рассылки:</td>
+                        <td>{{ object.get_mailing_status_display }}</td>
+                    </tr>
+                    <tr>
+                        <td>Клиенты:</td>
+                        <td>
+                            {% for client in object.clients.all %}
+                            {{ client }},
+                            {% endfor %}
+                        </td>
+                    </tr>
+                                        <tr>
+                        <td>Владелец:</td>
+                        <td>
+                            {{ object.owner }},
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="{% url 'mailing:mailing_list' %}" class="icon-link gap-1 icon-link-hover stretched-link">
+                    Назад
+                    <svg class="bi">
+                        <use xlink:href="#chevron-right"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
