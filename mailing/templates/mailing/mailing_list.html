@@ -1,0 +1,39 @@
+{% extends 'mailing/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+{% if not user|has_group:"manager" %}<p class="text-center mb-2">
+    <a href="{% url 'mailing:mailing_create' %}" class="btn btn-dark my-2">Создать рассылку</a>
+</p>
+{% endif %}
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    {% for object in object_list %}
+    <div class="d-flex text-muted pt-3 border-bottom justify-content-between">
+        <div class="d-flex text-muted pt-3">
+            <p class="pb-3 mb-0 small lh-sm">
+                <strong class="d-block text-gray-dark">{{ object }}</strong>
+                Сообщение: {{ object.message }}<br>
+                Дата и время первой отправки: {{ object.first_send_time }}<br>
+                Дата и время окончания рассылки:
+                {% if object.last_send_time %}
+                {{ object.last_send_time }}<br>
+                {% else %}
+                не указана<br>
+                {% endif %}
+                Периодичность рассылки: {{ object.get_periodicity_display }}<br>
+                Статус рассылки: {{ object.get_mailing_status_display }}<br>
+                Владелец: {{ object.owner }}<br>
+            </p>
+        </div>
+        <div class="btn-group h-50">
+            <a href="{% url 'mailing:mailing_detail' object.pk %}" class="btn btn-outline-dark my-2">Посмотреть</a>
+            <a href="{% url 'mailing:mailing_update' object.pk %}" class="btn btn-outline-dark my-2">Редактировать</a>
+            {% if perms.mailing.can_view_client or user == object.owner %}
+            <a href="{% url 'mailing:mailing_delete' object.pk %}" class="btn btn-outline-dark my-2">Удалить</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% include "mailing/includes/inc_pagination.html" with page=object_list %}
+</div>
+{% endblock %}
